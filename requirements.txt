@@ -3,7 +3,7 @@ common_functions==0.1.0
 h5py==3.10.0
 lvm_read==1.21
 matplotlib==3.8.4
-numpy==1.21.5
+numpy==1.22.0
 pandas==2.2.2
 PyMeasure==0.13.1
 pyserial==3.5
