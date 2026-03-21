@@ -29,19 +29,21 @@ SAVE_DATA = True
 osa = AQ6370D(center=1551.5e-9, span=20e-9)
 osa.set_sensitivity("HIGH1")
 osa.simple_sweep()
-FBG_NUMBER = "7"
-TEST = "traction"
+FBG_NUMBER = "1a"
+# TEST = "traction"
 # TEST = "free"
+TEST = "assembly_free"
+
 
 wavelength_m = osa.wavelength_m
 y = osa.optical_power_dbm
 
 
-# fig, ax = plt.subplots(1, 1, num=1, sharex=True, figsize=(FIG_L, 2 * FIG_A), dpi=100)
-# fig.supxlabel(r"$\lambda, [\unit{\nm}]$")
-# fig.supylabel(r"Potência óptica $[\si{\dbm\nm}]$")
-# ax.plot(wavelength_m * 1e9, y)
-# plt.show()
+fig, ax = plt.subplots(1, 1, num=1, sharex=True, figsize=(FIG_L, 2 * FIG_A), dpi=100)
+fig.supxlabel(r"$\lambda, [\unit{\nm}]$")
+fig.supylabel(r"Potência óptica $[\si{\dbm\nm}]$")
+ax.plot(wavelength_m * 1e9, y)
+plt.show()
 
 osa.close()
 

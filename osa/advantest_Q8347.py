@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 def checkSTB(instrument, t):  # FUNÇÃO BASEADA NO "wait of spectrometer" do Gabriel
     from time import sleep  # função para verificar o status byte do aparelho
     sleep(1)  # Como o Advantest nao tem a função do GPIB (SRQ),
-    i = True  # é preciso usar uma funçõa de mais baixo nivel
+    i = True  # é preciso usar uma funcao de mais baixo nivel
     while i:
         stb = instrument.read_stb()
         if stb == 1:  # Quando o STB é igual a 1, o Advantest terminou
@@ -38,20 +38,20 @@ osa.read_termination = '\n'  # configuraçoes da comunicaçao
 
 j = 1
 cont = True
-folder = 'dataTemp/interrogation_test_20230918/'
+folder = 'acquisitions/dataTemp/gabriel_osa/'
 
 while cont:
     print('Fazendo aquisição...')
     osa.write('MEA1')  # faz medição SINGLE
-    checkSTB(osa, 0.5)  # espera final da medição
     x = osa.query('OSD1')  # coleta dados do eixo x
     y = osa.query('OSD0')  # coleta dados do eixo y
+    checkSTB(osa, 0.5)  # espera final da medição
     x = x[5:]  # corta cabeçalho
     y = y[5:]  # corta cabeçalho
     x_array = asfarray(x.split(','))  # converte para array de floats do numpy
     y_array = asfarray(y.split(','))  # converte para array de floats do numpy
     data = column_stack((x_array, y_array))  # cria array com dados
-    test = 'fbg_2'
+    test = '120nm_lowres'
     # test = 'source_dehydrogenated'
     # test = 'advantest_02'
     # test = 'Anritsu_1'

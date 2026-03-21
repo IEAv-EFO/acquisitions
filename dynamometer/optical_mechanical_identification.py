@@ -18,7 +18,7 @@ import pandas as pd
 from pymeasure.instruments.anritsu import AnritsuMS9710C
 from pyvisa import ResourceManager
 
-from acquisitions.auxiliary_classes import Dynamometer, EncoderMikeController
+from acquisitions.dynamometer.auxiliary_classes import Dynamometer, EncoderMikeController
 from common_functions.generic_functions import *
 
 mpl.rcParams['figure.dpi'] = 72
@@ -111,7 +111,7 @@ def test_setup():
     return osa, dyn, mike
 
 
-def make_test(osa, dyn, mike, manual_micrometer: bool or float = False):
+def make_test(osa, dyn, mike, manual_micrometer: bool | float = False):
     # osa.single_sweep(n=10)
     # performe a singe sweep
     osa.write("ssi")

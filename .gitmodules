@@ -1,0 +1,3 @@
+[submodule "rot_table_comm"]
+	path = rot_table_comm
+	url = https://github.com/IEAv-EFO/rot-table-comm.git
